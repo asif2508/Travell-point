@@ -1,0 +1,30 @@
+.para-style{
+    font-family: cursive;
+    line-break:strict;
+    word-wrap: break-word;
+}
+.para-city{
+    line-height: 3px;
+    color: rgb(160, 7, 7);
+}
+h6{
+    color: #14274A;
+}
+.star-color{
+    color: rgb(238, 238, 26);
+}
+.card-style{
+    height: 540px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.book-now{
+    border: 1px solid white;
+    background-color: #14274A;
+    color: white;
+    padding: 5px 8px;
+}
+.book-now:hover{
+    border: 1px solid #14274A;
+    background-color: white;
+    color: #14274A;
+}

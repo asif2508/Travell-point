@@ -5,8 +5,11 @@ import './Home.css';
 import logo from '../../images/Group 2.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCalendarCheck, faCircleArrowDown} from '@fortawesome/free-solid-svg-icons';
+import {faCalendarCheck, faCircleArrowDown, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import usePlaces from '../../hooks/usePlaces';
+import Place from '../Place/Place';
 const Home = () => {
+  const [places, setPlaces] = usePlaces();
   return (
     <div>
       <header  className='home-style'>
@@ -24,7 +27,7 @@ const Home = () => {
               >
                 <Nav.Link className='link-style' as={Link} to="/" href='#home'>Home</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/booking">Booking</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/contacts">Contacts</Nav.Link>
+                <Nav.Link className='link-style' as={Link} to="/places">Places</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/login">Login</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/register">Register</Nav.Link>
               </Nav>
@@ -57,11 +60,19 @@ const Home = () => {
       </header>
       <main id='main-place'>
         <Container>
-          <h1 className='text-center mt-5'>Places You might Like</h1>
+          <div className='main-container'>
+          <h1 className='text-center mt-5 mb-3'>Places You might Like</h1>
           <div>
-              <Row>
-                
+              <Row className='gy-5'>
+                {
+                  places.slice(0,3).map(place => <Place
+                  key={place.id}
+                  place={place}
+                  ></Place>)
+                }
               </Row>
+          </div>
+          <button className='explore mt-5'>Explore more <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
           </div>
         </Container>
       </main>
