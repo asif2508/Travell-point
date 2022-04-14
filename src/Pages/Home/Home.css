@@ -4,9 +4,6 @@
     background-size:100% 700px;
     background-repeat: no-repeat;
 }
-.link-style{
-    font-size: larger;
-}
 .link-style:visited{
     text-decoration: underline !important;
 }
@@ -23,8 +20,8 @@
     color: white !important;
 }
 .banner{
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 7%;
+    padding-bottom: 7%;
     color: white;
 }
 .header-para{
@@ -62,12 +59,15 @@
     margin-bottom: 1%;
 }
 .scroll{
-    font-size: 1em;
+    font-size: 1.3em;
     color: white;
     line-height: 1px;
 }
 .scroll > a{
-    font-size: 1em;
+    font-size: 1.4em;
     color: white;
     line-height: 1px;
+}
+.scroll > a:hover{
+    color: #E0B973;
 }

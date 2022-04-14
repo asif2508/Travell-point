@@ -1,13 +1,15 @@
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Row } from 'react-bootstrap';
 import React from 'react';
 import Image from 'react-bootstrap/Image'
 import './Home.css';
 import logo from '../../images/Group 2.png';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCalendarCheck, faCircleArrowDown} from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
   return (
-    <div className='home-style'>
-      <header>
+    <div>
+      <header  className='home-style'>
         <Navbar expand="lg" variant='dark' id='home'>
           <Container>
             <Navbar.Brand href="#home">
@@ -42,16 +44,27 @@ const Home = () => {
           </div>
 
           <div className="d-flex justify-content-center align-items-center flex-column">
-            <p><a href="#" className="book-btn">
-              BOOK NOW
-            </a></p>
+            <p><Link to="/places" className="book-btn">
+              <FontAwesomeIcon icon={faCalendarCheck}></FontAwesomeIcon>
+              <span className='ms-2'>BOOK NOW</span>
+            </Link></p>
             <div className="scroller d-flex justify-content-center align-items-center flex-column">
               <p className="scroll">Scroll</p>
-              <p className="scroll"><a href="#"></a></p>
+              <p className="scroll"><a href="#main-place"> <FontAwesomeIcon icon={faCircleArrowDown}></FontAwesomeIcon></a></p>
             </div>
           </div>
         </Container>
       </header>
+      <main id='main-place'>
+        <Container>
+          <h1 className='text-center mt-5'>Places You might Like</h1>
+          <div>
+              <Row>
+                
+              </Row>
+          </div>
+        </Container>
+      </main>
     </div>
   );
 };
