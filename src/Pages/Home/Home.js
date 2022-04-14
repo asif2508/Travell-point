@@ -3,13 +3,17 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'
 import './Home.css';
 import logo from '../../images/Group 2.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCalendarCheck, faCircleArrowDown, faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import usePlaces from '../../hooks/usePlaces';
 import Place from '../Place/Place';
 const Home = () => {
   const [places, setPlaces] = usePlaces();
+  const navigate  = useNavigate();
+  const navigateToPlaces =()=>{
+    navigate('/places');
+  }
   return (
     <div>
       <header  className='home-style'>
@@ -72,7 +76,7 @@ const Home = () => {
                 }
               </Row>
           </div>
-          <button className='explore mt-5'>Explore more <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+          <button onClick={navigateToPlaces} className='explore mt-5'>Explore more <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
           </div>
         </Container>
       </main>
