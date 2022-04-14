@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 const Contact = () => {
     return (
-        <div>
-            <h1>This is Contact.</h1>
+        <div id='contact'>
+            <Header></Header>
         </div>
     );
 };

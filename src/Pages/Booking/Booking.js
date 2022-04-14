@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 const Booking = () => {
     return (
-        <div>
-            <h1>This is booking.</h1>
+        <div id='booking'>
+            <Header></Header>
         </div>
     );
 };

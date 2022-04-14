@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 const Register = () => {
     return (
-        <div>
-            <h1>This is register</h1>
+        <div id='register' >
+            <Header></Header>
         </div>
     );
 };
