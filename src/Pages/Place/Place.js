@@ -3,8 +3,10 @@ import { Card, Col } from 'react-bootstrap';
 import './Place.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 const Place = (props) => {
     const { name, img, city, country, desc, rating } = props.place;
+    const navigate = useNavigate();
     return (
         <Col xs={12} md={4} lg={4}>
             <Card className='card-style'>
@@ -43,7 +45,7 @@ const Place = (props) => {
                             <FontAwesomeIcon className='star-color' icon={faStar}></FontAwesomeIcon>
                         </p>
                     }
-                    <button className='book-now'>Book Now</button>
+                    <button onClick={()=>navigate('/booking')} className='book-now'>Book Now</button>
                 </Card.Body>
             </Card>
         </Col>

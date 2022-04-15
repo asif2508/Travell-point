@@ -12,13 +12,10 @@ const Header = () => {
             <Navbar.Brand href="#home">
               <Image height={90} width={150} src={logo} />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
               <Nav
-                className="ms-auto my-2 my-lg-0"
-                style={{ maxHeight: '100px' }}
-                navbarScroll
-              >
+                className="ms-auto my-2 my-lg-0">
                 <Nav.Link className='link-style' as={Link} to="/" href='#home'>Home</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/booking" href='#booking'>Booking</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/places" href='#places'>Places</Nav.Link>
