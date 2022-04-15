@@ -1,0 +1,18 @@
+.logo-backgound{
+    padding: 10px;
+    background-color: rgb(170, 26, 98);
+    color: white;
+    border-radius: 50px;
+    border: 1px solid white;
+
+}
+.logo-backgound:hover{
+    background-color: white;
+    color:rgb(170, 26, 98);
+    border: 1px solid rgb(170, 26, 98);
+    cursor: pointer;
+}
+.logo-backgound:active{
+    background-color: red;
+    color: white;
+}
