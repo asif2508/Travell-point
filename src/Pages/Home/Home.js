@@ -27,8 +27,8 @@ const Home = () => {
               <Nav
                 className="ms-auto my-2 my-lg-0">
                 <Nav.Link className='link-style' as={Link} to="/" href='#home'>Home</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/booking">Booking</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/places">Places</Nav.Link>
+                <Nav.Link className='link-style' as={Link} to="/booking">Booking</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/login">Login</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/register">Register</Nav.Link>
               </Nav>

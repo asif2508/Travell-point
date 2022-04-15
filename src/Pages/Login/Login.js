@@ -24,7 +24,7 @@ const Login = () => {
                         </FloatingLabel>
                         <button className='w-100 mt-3 login-btn' type="submit">Login</button>
                     </form>
-                    <p className='text-start m-2'>Don't have an account?<Link to='/register'>Register</Link> </p>
+                    <p className='text-start m-2'>Don't have an account?<Link className='text-primary ms-1 fw-bold' to='/register'>Register</Link> </p>
                     <Social></Social>
                 </div>
             </Container>

@@ -12,6 +12,7 @@
     border: 1px solid black;
     width: 45%;
     border-radius: 50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     
 }
 .login-btn{
@@ -34,4 +35,10 @@
     width: 25%;
     height: 1px;
     border: 1px solid black;
+}
+
+@media screen and (max-width: 576px) {
+    .form-style{
+        width: 100%;
+    }
 }
