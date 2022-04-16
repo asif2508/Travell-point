@@ -21,14 +21,20 @@ const Register = () => {
     if (loading || updating) {
         return <Loading></Loading>
     }
+    if(user){
+        navigate('/home');
+    }
+
     const handleCreateUser = async (event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        if (!user) {
+        if(!user){
             await createUserWithEmailAndPassword(email, password);
             await updateProfile({ displayName: name });
+        }
+        if (user) {
             navigate('/home');
         }
     }
@@ -54,8 +60,8 @@ const Register = () => {
                         <FloatingLabel controlId="floatingPassword" label="Password">
                             <Form.Control type="password" name="password" placeholder="Password" />
                         </FloatingLabel>
-                        {error ? <p>{error.message}</p> : ''}
-                        {error1 ? <p>{error1.message}</p> : ''}
+                        {error && <p className='text-danger mb-0'>{error.message}</p>}
+                        
                         <button className='w-100 mt-3 login-btn' type="submit">Register</button>
                     </form>
                     <p className='text-start m-2'>Already have an account?<Link className='text-primary ms-1 fw-bold' to='/login'>Login</Link> </p>

@@ -25,6 +25,11 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email,password);
+        if (user) {
+            navigate('/home');
+        }
+    }
+    if(user){
         navigate('/home');
     }
     return (
@@ -42,7 +47,9 @@ const Login = () => {
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingPassword" label="Password">
                             <Form.Control type="password" name='password' placeholder="Password" />
+
                         </FloatingLabel>
+                        {error && <p className='text-danger mt-1 mb-0'>{error.message}</p>}
                         <button className='w-100 mt-3 login-btn' type="submit">Login</button>
                     </form>
                     <p className='text-start m-2'>Don't have an account?<Link className='text-primary ms-1 fw-bold' to='/register'>Register</Link> </p>
