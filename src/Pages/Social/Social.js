@@ -3,17 +3,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {} from '@fortawesome/free-solid-svg-icons';
 import {  faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import './Social.css';
+import { useSignInWithFacebook, useSignInWithGoogle, useSignInWithTwitter } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
 const Social = () => {
+    const [signInWithGoogle, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithTwitter, loading1, error1] = useSignInWithTwitter(auth);
+    const [signInWithFacebook, loading2, error2] = useSignInWithFacebook(auth);
+    const navigate = useNavigate();
+    if (loading || loading1 || loading2) {
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <div className='d-flex mt-3 align-items-center justify-content-center mb-3'>
                 <div className='line-style'></div><div className='ms-1 me-1 fw-bold'>Or sign in with</div><div className='line-style'></div>
             </div>
             <div className='d-flex justify-content-around'>
-                <div><FontAwesomeIcon  className='fs-5 logo-backgound' icon={faGoogle}></FontAwesomeIcon> </div>
-                <div><FontAwesomeIcon className='fs-5 logo-backgound' icon={faFacebook}></FontAwesomeIcon></div>
-                <div><FontAwesomeIcon className='fs-5 logo-backgound' icon={faTwitter}></FontAwesomeIcon></div>
+                <div><FontAwesomeIcon onClick={()=>{
+                     signInWithGoogle();
+                     navigate('/home');
+                }}  className='fs-5 logo-backgound' icon={faGoogle}></FontAwesomeIcon> </div>
+                <div><FontAwesomeIcon  onClick={()=> {
+                    signInWithFacebook(); 
+                    navigate('/home');
+                }}className='fs-5 logo-backgound' icon={faFacebook}></FontAwesomeIcon></div>
+                <div><FontAwesomeIcon  onClick={()=> {
+                    signInWithTwitter();
+                    navigate('/home');
+                } } className='fs-5 logo-backgound' icon={faTwitter}></FontAwesomeIcon></div>
             </div>
         </div>
     );

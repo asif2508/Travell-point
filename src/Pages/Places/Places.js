@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Place from '../Place/Place';
 
 const Places = () => {
-    const [places, setPlaces] = usePlaces();
+    const [places] = usePlaces();
     return (
         <div>
             <Header></Header>

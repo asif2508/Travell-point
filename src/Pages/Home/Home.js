@@ -5,18 +5,18 @@ import './Home.css';
 import logo from '../../images/Group 2.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCalendarCheck, faCircleArrowDown, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faCircleArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import usePlaces from '../../hooks/usePlaces';
 import Place from '../Place/Place';
 const Home = () => {
   const [places] = usePlaces();
-  const navigate  = useNavigate();
-  const navigateToPlaces =()=>{
+  const navigate = useNavigate();
+  const navigateToPlaces = () => {
     navigate('/places');
   }
   return (
     <div>
-      <header  className='home-style'>
+      <header className='home-style'>
         <Navbar expand="lg" variant='dark' id='home'>
           <Container>
             <Navbar.Brand href="#home">
@@ -62,18 +62,18 @@ const Home = () => {
       <main id='main-place'>
         <Container>
           <div className='main-container'>
-          <h1 className='text-center mt-5 mb-3'>Places You might Like</h1>
-          <div>
+            <h1 className='text-center mt-5 mb-3'>Places You might Like</h1>
+            <div>
               <Row className='gy-5'>
                 {
-                  places.slice(0,3).map(place => <Place
-                  key={place.id}
-                  place={place}
+                  places.slice(0, 3).map(place => <Place
+                    key={place.id}
+                    place={place}
                   ></Place>)
                 }
               </Row>
-          </div>
-          <button onClick={navigateToPlaces} className='explore mt-5'>Explore more <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+            </div>
+            <button onClick={navigateToPlaces} className='explore mt-5'>Explore more <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
           </div>
         </Container>
       </main>

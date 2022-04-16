@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import {useParams} from 'react-router-dom';
 import usePlaces from '../../hooks/usePlaces';
-import Header from '../Header/Header';
-
+import {Col, Container, Row} from 'react-bootstrap';
 const Booking = () => {
-    let params = useParams();
-    const [places, setPlace] = usePlaces(params.placeID);
-    console.log(places);
+    let {placeID} = useParams();
+    const [places] = usePlaces([]);
+    const selectedPlace = places.find(place => place.id == placeID);
+    console.log(selectedPlace);
     return (
-        <div id='booking'>
-            <Header></Header>
-            <h1>hello</h1>
+        <div>
             <Container>
+                <h1>Book Your Next Destination</h1>
                 <Row>
                     <Col xs={12} md={7} lg={7}>
-                        <Card className="bg-dark text-white">
-                            <Card.Img src="holder.js/100px270" alt="Card image" />
-                            <Card.ImgOverlay>
-                                <Card.Title>{ }</Card.Title>
-                                <Card.Text>
-                                    This is a wider card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                                </Card.Text>
-                                <Card.Text>Last updated 3 mins ago</Card.Text>
-                            </Card.ImgOverlay>
-                        </Card>
+                        
                     </Col>
-                    <Col xs={12} md={7} lg={7}>
-
-                    </Col>
+                    <Col xs={12} md={7} lg={7}></Col>
                 </Row>
             </Container>
         </div>

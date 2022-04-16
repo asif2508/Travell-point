@@ -3,7 +3,7 @@ import {useState, useEffect } from 'react';
 const usePlaces =()=>{
     const [places, setPlaces] = useState([]);
     useEffect(()=>{
-        fetch('places.json')
+        fetch('https://raw.githubusercontent.com/asif2508/Travell-point/main/public/places.jsonS')
         .then(res => res.json())
         .then(data => setPlaces(data));
     },[]);
