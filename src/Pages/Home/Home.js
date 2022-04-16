@@ -8,9 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faCircleArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import usePlaces from '../../hooks/usePlaces';
 import Place from '../Place/Place';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 const Home = () => {
   const [places] = usePlaces();
   const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+
   const navigateToPlaces = () => {
     navigate('/places');
   }
@@ -28,9 +33,16 @@ const Home = () => {
                 className="ms-auto my-2 my-lg-0">
                 <Nav.Link className='link-style' as={Link} to="/" href='#home'>Home</Nav.Link>
                 <Nav.Link className='link-style' as={Link} to="/places">Places</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/booking">Booking</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/login">Login</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/register">Register</Nav.Link>
+                {user ? 
+                <Nav.Link className='link-style' onClick={()=>signOut(auth)} as={Link} to="/home" href='#logout'>Signout</Nav.Link>
+                :
+                <Nav.Link className='link-style' as={Link} to="/login" href='#login'>Login</Nav.Link>
+                }
+                {user ?
+                ''
+                :
+                <Nav.Link className='link-style' as={Link} to="/register" href='#register'>Register</Nav.Link>
+                }
               </Nav>
 
             </Navbar.Collapse>

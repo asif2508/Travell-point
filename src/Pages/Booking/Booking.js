@@ -45,7 +45,7 @@ const Booking = () => {
                                 <p>Name</p>
                                 <FloatingLabel
                                     controlId="floatingInput"
-                                    label={user.displayName}
+                                    label={user?.displayName}
                                     className="mb-3">
                                     <Form.Control type="name" name='name' placeholder="Your Name" disabled />
                                 </FloatingLabel>
