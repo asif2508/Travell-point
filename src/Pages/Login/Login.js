@@ -3,10 +3,9 @@ import { Container, FloatingLabel, Form } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './Login.css';
 import Social from '../Social/Social';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { async } from '@firebase/util';
 import Loading from '../Loading/Loading';
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -17,9 +16,12 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-      const navigate = useNavigate();
-      if (loading) {
-        return <Loading></Loading>
+    const navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
+    if (loading) {
+    return <Loading></Loading>
     }
     const handlesignIn = async event =>{
         event.preventDefault();
@@ -27,11 +29,11 @@ const Login = () => {
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email,password);
         if (user) {
-            navigate('/home');
+            navigate(from, { replace: true });
         }
     }
     if(user){
-        navigate('/home');
+        navigate(from, { replace: true });
     }
     return (
         <div>

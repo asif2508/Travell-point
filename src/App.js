@@ -9,6 +9,7 @@ import Booking from './Pages/Booking/Booking';
 import NotFound from './Pages/NotFound/NotFound';
 import Places from './Pages/Places/Places';
 import Footer from './Pages/Footer/Footer';
+import RequiredAuth from './Pages/RequiredAuth/RequiredAuth';
 function App() {
   return (
     <div className="App">
@@ -19,7 +20,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/places' element={<Places></Places>}></Route>
-        <Route path='/booking/:placeID' element={<Booking></Booking>}></Route>
+        <Route path='/booking/:placeID' element={
+          <RequiredAuth>
+            <Booking></Booking>
+          </RequiredAuth>
+        }></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
 
       </Routes>
