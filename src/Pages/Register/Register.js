@@ -7,6 +7,7 @@ import './Register.css';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Register = () => {
     const [
@@ -41,6 +42,7 @@ const Register = () => {
     return (
         <div id='register' >
             <Header></Header>
+            <PageTitle title="Register"></PageTitle>
             <Container fluid className='register-page'>
                 <div className='register-style mx-auto p-4'>
                     <h3>Create a New Account</h3>

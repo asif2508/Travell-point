@@ -11,6 +11,7 @@ import Place from '../Place/Place';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
+import PageTitle from '../PageTitle/PageTitle';
 const Home = () => {
   const [places] = usePlaces();
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Home = () => {
   }
   return (
     <div>
+      <PageTitle title="home"></PageTitle>
       <header className='home-style'>
         <Navbar expand="lg" variant='dark' id='home'>
           <Container>

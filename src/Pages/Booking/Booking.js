@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import './Booking .css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import PageTitle from '../PageTitle/PageTitle';
 const Booking = () => {
     let { placeID } = useParams();
     const [places] = usePlaces([]);
@@ -15,6 +16,7 @@ const Booking = () => {
     return (
         <div>
             <Header></Header>
+            <PageTitle title="Booking"></PageTitle>
             <Container fluid className='mb-5 mt-5'>
                 
                 <Row>

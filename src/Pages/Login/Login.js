@@ -8,6 +8,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { async } from '@firebase/util';
 import Loading from '../Loading/Loading';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Login = () => {
     const [
@@ -35,6 +36,7 @@ const Login = () => {
     return (
         <div>
             <Header></Header>
+            <PageTitle title="Login"></PageTitle>
             <Container fluid className='login-page'>
                 <div className='form-style mx-auto p-4'>
                     <h3>Login to Your Account</h3>

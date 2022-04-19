@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import usePlaces from '../../hooks/usePlaces';
 import Header from '../Header/Header';
+import PageTitle from '../PageTitle/PageTitle';
 import Place from '../Place/Place';
 
 const Places = () => {
@@ -9,6 +10,7 @@ const Places = () => {
     return (
         <div>
             <Header></Header>
+            <PageTitle title="Places"></PageTitle>
             <Container>
           <div className='main-container'>
           <h1 className='text-center mt-5 mb-3'>More Destinations for you</h1>
