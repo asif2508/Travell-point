@@ -4,10 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Social from '../Social/Social';
 import './Register.css';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import PageTitle from '../PageTitle/PageTitle';
+
 
 const Register = () => {
     const [
@@ -17,6 +18,7 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
+    const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
     const navigate = useNavigate()
 
     if (loading || updating) {
@@ -34,6 +36,7 @@ const Register = () => {
         if(!user){
             await createUserWithEmailAndPassword(email, password);
             await updateProfile({ displayName: name });
+            await sendEmailVerification();
         }
         if (user) {
             navigate('/home');
