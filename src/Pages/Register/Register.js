@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Social from '../Social/Social';
 import './Register.css';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithFacebook, useSignInWithGoogle, useSignInWithTwitter, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import PageTitle from '../PageTitle/PageTitle';
@@ -17,9 +17,12 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, updating, error1] = useUpdateProfile(auth);
-    const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
+    const [updateProfile, updating] = useUpdateProfile(auth);
+    const [sendEmailVerification] = useSendEmailVerification(auth);
     const navigate = useNavigate()
+    const [signInWithGoogle, loading3] = useSignInWithGoogle(auth);
+    const [signInWithTwitter, loading1] = useSignInWithTwitter(auth);
+    const [signInWithFacebook, loading2] = useSignInWithFacebook(auth);
 
     if (loading || updating) {
         return <Loading></Loading>
@@ -38,9 +41,20 @@ const Register = () => {
             await updateProfile({ displayName: name });
             await sendEmailVerification();
         }
-        if (user) {
-            navigate('/home');
-        }
+    if (user) {
+        navigate('/home');
+    }
+    }
+    const handleSignInWithGoogle =()=>{
+        signInWithGoogle();
+    }
+    const handleSignInWithFacebook =()=>{
+        signInWithFacebook();
+        
+    }
+    const handleSignInWithTwitter =()=>{
+        signInWithTwitter();
+        
     }
     return (
         <div id='register' >
@@ -70,7 +84,14 @@ const Register = () => {
                         <button className='w-100 mt-3 login-btn' type="submit">Register</button>
                     </form>
                     <p className='text-start m-2'>Already have an account?<Link className='text-primary ms-1 fw-bold' to='/login'>Login</Link> </p>
-                    <Social></Social>
+                    <Social 
+                    handleSignInWithGoogle ={handleSignInWithGoogle}
+                    handleSignInWithFacebook ={handleSignInWithFacebook}
+                    handleSignInWithTwitter = {handleSignInWithTwitter}
+                    loading1 = {loading1}
+                    loading2 = {loading2}
+                    loading3 = {loading3}
+                    ></Social>
                 </div>
             </Container>
         </div>

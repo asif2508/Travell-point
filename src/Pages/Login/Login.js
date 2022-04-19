@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import './Login.css';
 import Social from '../Social/Social';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle, useSignInWithTwitter } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import PageTitle from '../PageTitle/PageTitle';
@@ -17,6 +17,9 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    const [signInWithGoogle, loading3] = useSignInWithGoogle(auth);
+    const [signInWithTwitter, loading1] = useSignInWithTwitter(auth);
+    const [signInWithFacebook, loading2] = useSignInWithFacebook(auth);
     let location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
@@ -34,6 +37,17 @@ const Login = () => {
     }
     if(user){
         navigate(from, { replace: true });
+    }
+    const handleSignInWithGoogle =()=>{
+        signInWithGoogle();
+    }
+    const handleSignInWithFacebook =()=>{
+        signInWithFacebook();
+        
+    }
+    const handleSignInWithTwitter =()=>{
+        signInWithTwitter();
+        
     }
     return (
         <div>
@@ -57,7 +71,14 @@ const Login = () => {
                         <button className='w-100 mt-3 login-btn' type="submit">Login</button>
                     </form>
                     <p className='text-start m-2'>Don't have an account?<Link className='text-primary ms-1 fw-bold' to='/register'>Register</Link> </p>
-                    <Social></Social>
+                    <Social 
+                    handleSignInWithGoogle ={handleSignInWithGoogle}
+                    handleSignInWithFacebook ={handleSignInWithFacebook}
+                    handleSignInWithTwitter = {handleSignInWithTwitter}
+                    loading1 = {loading1}
+                    loading2 = {loading2}
+                    loading3 = {loading3}
+                    ></Social>
                 </div>
             </Container>
         </div>

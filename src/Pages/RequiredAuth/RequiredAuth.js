@@ -7,8 +7,8 @@ import VerifyUser from '../VerifyUser/VerifyUser';
 
 const RequiredAuth = ({ children }) =>{
     let location = useLocation();
-    const [user, loading, error] = useAuthState(auth);
-    const [sendEmailVerification, sending, error1] = useSendEmailVerification(auth);
+    const [user, loading] = useAuthState(auth);
+    const [sendEmailVerification] = useSendEmailVerification(auth);
     if(loading){
         return <Loading></Loading>
     }
