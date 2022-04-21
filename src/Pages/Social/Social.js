@@ -3,13 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {} from '@fortawesome/free-solid-svg-icons';
 import {  faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import './Social.css';
-import Loading from '../Loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-const Social = (handleSignInWithTwitter, handleSignInWithGoogle, handleSignInWithFacebook, loading3, loading1, loading2) => {
-    
-    if (loading3 || loading1 || loading2) {
-        return <Loading></Loading>
+const Social = ({handleSignInWithTwitter, handleSignInWithGoogle, handleSignInWithFacebook, loading3, loading1, loading2}) => {
+    let location = useLocation();
+    const navigate = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
+    let from = location.state?.from?.pathname || "/";
+    if (user) {
+        navigate(from, { replace: true });
     }
     return (
         <div>
@@ -18,7 +22,7 @@ const Social = (handleSignInWithTwitter, handleSignInWithGoogle, handleSignInWit
             </div>
             <div className='d-flex justify-content-around'>
                 <div><FontAwesomeIcon onClick={handleSignInWithGoogle}  className='fs-5 logo-backgound' icon={faGoogle}></FontAwesomeIcon> </div>
-                <div><FontAwesomeIcon  onClick={handleSignInWithFacebook}className='fs-5 logo-backgound' icon={faFacebook}></FontAwesomeIcon></div>
+                <div><FontAwesomeIcon  onClick={handleSignInWithFacebook} className='fs-5 logo-backgound' icon={faFacebook}></FontAwesomeIcon></div>
                 <div><FontAwesomeIcon  onClick={handleSignInWithTwitter} className='fs-5 logo-backgound' icon={faTwitter}></FontAwesomeIcon></div>
             </div>
         </div>

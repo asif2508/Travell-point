@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, FloatingLabel, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -23,6 +23,7 @@ const Register = () => {
     const [signInWithGoogle, loading3] = useSignInWithGoogle(auth);
     const [signInWithTwitter, loading1] = useSignInWithTwitter(auth);
     const [signInWithFacebook, loading2] = useSignInWithFacebook(auth);
+    const [message, setMessage] = useState('');
 
     if (loading || updating) {
         return <Loading></Loading>
@@ -36,10 +37,20 @@ const Register = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        if(!user){
-            await createUserWithEmailAndPassword(email, password);
-            await updateProfile({ displayName: name });
-            await sendEmailVerification();
+        const confirmPassword = event.target.confirmPassword.value;
+        if(password < 6){
+            if(password === confirmPassword){
+                if(!user){
+                    await createUserWithEmailAndPassword(email, password);
+                    await updateProfile({ displayName: name });
+                    await sendEmailVerification();
+                }
+            }else{
+                setMessage("Password and Confirm password didn't match!");
+            }
+
+        }else{
+            setMessage("Password length can't be less than 6!")
         }
     if (user) {
         navigate('/home');
@@ -76,10 +87,14 @@ const Register = () => {
                             className="mb-3">
                             <Form.Control type="email" name='email' placeholder="name@example.com" />
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingPassword" label="Password">
+                        <FloatingLabel className="mb-3" controlId="floatingPassword" label="Password">
                             <Form.Control type="password" name="password" placeholder="Password" />
                         </FloatingLabel>
+                        <FloatingLabel controlId="floatingPassword" label="Confirm Password">
+                            <Form.Control type="password" name="confirmPassword" placeholder="Confirm Password" />
+                        </FloatingLabel>
                         {error && <p className='text-danger mb-0'>{error.message}</p>}
+                        {message && <p className='text-danger mb-0'>{message}</p>}
                         
                         <button className='w-100 mt-3 login-btn' type="submit">Register</button>
                     </form>
