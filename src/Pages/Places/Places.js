@@ -1,12 +1,15 @@
-import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import usePlaces from '../../hooks/usePlaces';
 import Header from '../Header/Header';
+import Loading from '../Loading/Loading';
 import PageTitle from '../PageTitle/PageTitle';
 import Place from '../Place/Place';
 
 const Places = () => {
     const [places] = usePlaces();
+    if(!places){
+      return <Loading></Loading>
+    }
     return (
         <div>
             <Header></Header>

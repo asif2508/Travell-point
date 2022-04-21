@@ -15,7 +15,7 @@ import PageTitle from '../PageTitle/PageTitle';
 const Home = () => {
   const [places] = usePlaces();
   const navigate = useNavigate();
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const navigateToPlaces = () => {
     navigate('/places');

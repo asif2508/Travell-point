@@ -10,7 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const Social = ({handleSignInWithTwitter, handleSignInWithGoogle, handleSignInWithFacebook, loading3, loading1, loading2}) => {
     let location = useLocation();
     const navigate = useNavigate();
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     let from = location.state?.from?.pathname || "/";
     if (user) {
         navigate(from, { replace: true });

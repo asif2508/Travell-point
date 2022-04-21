@@ -1,8 +1,9 @@
 import React from 'react';
 import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faMapMarkedAlt, faPhoneAlt, faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import {  faFacebookSquare , faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import { faMapMarkedAlt, faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import { FormControl, InputGroup, Button } from 'react-bootstrap';
 const Footer = () => {
     return (
         <div>
@@ -16,11 +17,11 @@ const Footer = () => {
                             <span>497 Evergreen Rd. Roseville, CA 95673</span>
                         </h6>
                         <h6 class="address">
-                        <FontAwesomeIcon icon={faPhoneAlt}></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faPhoneAlt}></FontAwesomeIcon>
                             <a href="tel:+44 345 678 903">+44 345 678 903</a>
                         </h6>
                         <h6 class="address">
-                        <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
                             <a href="mailto:rakibul4210@gmail.com">luxury_hotels@gmail.com</a>
                         </h6>
                     </div>
@@ -37,7 +38,7 @@ const Footer = () => {
                     </div>
                     <div class="social p-3">
                         <h6 class="address">
-                        <FontAwesomeIcon icon={faFacebookSquare}></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faFacebookSquare}></FontAwesomeIcon>
                             <a href="https://www.facebook.com">Facebook</a>
                         </h6>
                         <h6 class="address">
@@ -53,8 +54,16 @@ const Footer = () => {
                         <h6 class="address">
                             <a href="#">Subscribe to our newsletter</a>
                         </h6>
-                        <input type="email" class="input-box" id="floatingInput" placeholder="name@example.com"/>
-                        <a href="#" class="sub-btn"> Subscibe</a>
+                        <InputGroup className="mb-3">
+                            <FormControl
+                                placeholder="Recipient's username"
+                                aria-label="Recipient's username"
+                                className="input-box"
+                            />
+                            <Button className="sub-btn" id="button-addon2">
+                                Button
+                            </Button>
+                        </InputGroup>
                     </div>
 
                 </div>

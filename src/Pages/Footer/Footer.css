@@ -25,18 +25,11 @@ footer{
     color: white;
     margin-left: 3px;
 }
-.input-box{
-    width: 50%;
-    margin-right: 0;
-}
+
 .sub-btn{
     text-decoration: none;
     color: white;
     background-color: #E0B973;
-    padding: 5px 8px;
-    border-radius: 5px;
-    margin-bottom: 2%;
-    margin-left: 0;
     border: 1px solid #E0B973;
 }
 .sub-btn:hover{
