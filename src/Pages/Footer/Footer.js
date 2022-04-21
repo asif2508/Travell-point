@@ -9,7 +9,7 @@ const Footer = () => {
         <div>
             <footer>
                 <div class="footer d-flex justify-content-between align-items-center p-5 flex-wrap">
-                    <div class="name p-3">
+                    <div class="name text-start p-3">
                         <h3 class="footer-heading">LUXURY</h3>
                         <p class="ms-5 lh-1"><small>HOTELS</small></p>
                         <h6 class="address">
@@ -25,7 +25,7 @@ const Footer = () => {
                             <a href="mailto:rakibul4210@gmail.com">luxury_hotels@gmail.com</a>
                         </h6>
                     </div>
-                    <div class="links p-3">
+                    <div class="links p-3 text-start">
                         <h6 class="address">
                             <a href="#">About Us</a>
                         </h6>
@@ -36,7 +36,7 @@ const Footer = () => {
                             <a href="#">Terms & Conditions</a>
                         </h6>
                     </div>
-                    <div class="social p-3">
+                    <div class="social p-3 text-start">
                         <h6 class="address">
                             <FontAwesomeIcon icon={faFacebookSquare}></FontAwesomeIcon>
                             <a href="https://www.facebook.com">Facebook</a>
@@ -56,12 +56,12 @@ const Footer = () => {
                         </h6>
                         <InputGroup className="mb-3">
                             <FormControl
-                                placeholder="Recipient's username"
-                                aria-label="Recipient's username"
+                                placeholder="email"
+                                aria-label="email"
                                 className="input-box"
                             />
                             <Button className="sub-btn" id="button-addon2">
-                                Button
+                                Send
                             </Button>
                         </InputGroup>
                     </div>

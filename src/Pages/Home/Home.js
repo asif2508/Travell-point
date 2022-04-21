@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'
 import './Home.css';
 import logo from '../../images/Group 2.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faCircleArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import usePlaces from '../../hooks/usePlaces';
@@ -12,6 +12,7 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import PageTitle from '../PageTitle/PageTitle';
+import CustomLink from '../CustomLink/CustomLink';
 const Home = () => {
   const [places] = usePlaces();
   const navigate = useNavigate();
@@ -33,17 +34,17 @@ const Home = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav
                 className="ms-auto my-2 my-lg-0">
-                <Nav.Link className='link-style' as={Link} to="/" href='#home'>Home</Nav.Link>
-                <Nav.Link className='link-style' as={Link} to="/places">Places</Nav.Link>
+                <Nav.Link className='link-style' as={CustomLink} to="/">Home</Nav.Link>
+                <Nav.Link className='link-style' as={CustomLink} to="/places">Places</Nav.Link>
                 {user ? 
-                <Nav.Link className='link-style' onClick={()=>signOut(auth)} as={Link} to="/home" href='#logout'>Signout</Nav.Link>
+                <Nav.Link className='link-style' as={CustomLink} onClick={()=>signOut(auth)} to="/home">Signout</Nav.Link>
                 :
-                <Nav.Link className='link-style' as={Link} to="/login" href='#login'>Login</Nav.Link>
+                <Nav.Link className='link-style' as={CustomLink} to="/login">Login</Nav.Link>
                 }
                 {user ?
                 ''
                 :
-                <Nav.Link className='link-style' as={Link} to="/register" href='#register'>Register</Nav.Link>
+                <Nav.Link className='link-style' as={CustomLink} to="/register">Register</Nav.Link>
                 }
               </Nav>
 
@@ -62,10 +63,10 @@ const Home = () => {
           </div>
 
           <div className="d-flex justify-content-center align-items-center flex-column">
-            <p><Link to="/places" className="book-btn">
+            <p><a href="#main-place" className="book-btn">
               <FontAwesomeIcon icon={faCalendarCheck}></FontAwesomeIcon>
               <span className='ms-2'>BOOK NOW</span>
-            </Link></p>
+            </a></p>
             <div className="scroller d-flex justify-content-center align-items-center flex-column">
               <p className="scroll">Scroll</p>
               <p className="scroll"><a href="#main-place"> <FontAwesomeIcon icon={faCircleArrowDown}></FontAwesomeIcon></a></p>
